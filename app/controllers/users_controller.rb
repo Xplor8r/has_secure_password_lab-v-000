@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if !@user
       redirect_to controller: 'users', action: 'new'
     else
+      @user.save
       session[:user_id] = @user.id
       redirect_to controller: 'users', action: 'create'
     end
