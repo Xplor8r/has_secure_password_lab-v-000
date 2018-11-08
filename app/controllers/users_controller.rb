@@ -7,12 +7,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if !@user
-      redirect_to controller: 'users', action: 'new'
-    else
-      session[:user_id] = @user.id
+    @user = User.create(user_params)
+    return redirect_to controller: 'users', action: 'new' unless @user.save
+    session[:user_id] = @user.id
       redirect_to controller: 'application', action: 'home'
-    end
+    
   end
 
   private
