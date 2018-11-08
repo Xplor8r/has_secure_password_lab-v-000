@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def home
   end
-  
+
   def create
     @user = User.create(user_params)
     if !@user
